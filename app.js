@@ -3,8 +3,10 @@
 
 // Helper function to display JavaScript value on HTML page.
 function showResponse(response) {
+    var title = response.items[0].snippet.title;
     var responseString = JSON.stringify(response, '', 2);
-    document.getElementById('response').innerHTML += responseString;
+    document.getElementById('response').innerHTML += title;
+
 }
 
 // Called automatically when JavaScript client library is loaded.
@@ -25,7 +27,8 @@ function search() {
     // Use the JavaScript client library to create a search.list() API call.
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
-        q: 'elephant'
+        q: 'elephant',
+        maxResults: 1
 
     });
 
